@@ -62,4 +62,3 @@ string toStr(long int i){
 int toInt(string str){
   return isStrNumber(str) ? stoi(str) : 0;
 }
-

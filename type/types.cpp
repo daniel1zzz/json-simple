@@ -12,6 +12,7 @@ using namespace std;
       jv.STR = getString(key);
       jv.INT = getInt(key);
       jv.BOO = getBool(key);
+      jv.FLO = getFloat(key);
       if(dat->objects[getString(key)] != "") jv.OBJ = getObject(key);
       if(dat->arrays[getString(key)] != "") jv.ARR = getArray(key);
       return jv;
@@ -23,6 +24,16 @@ using namespace std;
 
     int JSONObject::getInt(string key){
       return toInt(getString(key));
+    }
+
+    float JSONObject::getFloat(string key){
+      float res;
+      try {
+        res = std::stof(getString(key));
+      } catch (const std::invalid_argument& e) {
+        return 0.0;
+      }
+      return res;
     }
 
     bool JSONObject::getBool(string key){
@@ -51,7 +62,7 @@ using namespace std;
       return arr;
     }
 
-    bool JSONObject::setString(string key, string val){
+    bool JSONObject::set(string key, string val){
       string elt = getString(key);
       if(dat->objects[elt] != "") {
         cout << "Error " << key << " es un object!" << endl;
@@ -64,12 +75,16 @@ using namespace std;
       return true;
     }
 
-    bool JSONObject::setInt(string key, int val){
-      return setString(key, toStr(val));
+    bool JSONObject::set(string key, int val){
+      return set(key, toStr(val));
     }
 
-    bool JSONObject::setBool(string key, bool val){
-      return setString(key, val ? "true" : "false");
+    bool JSONObject::set(string key, float val){
+      return set(key, to_string(val));
+    }
+
+    bool JSONObject::set(string key, bool val){
+      return set(key, val ? "true" : "false");
     }
 
     JSONObject::JSONObject(JsonData *data){
@@ -95,6 +110,7 @@ using namespace std;
       jv.STR = getString(pos);
       jv.INT = getInt(pos);
       jv.BOO = getBool(pos);
+      jv.FLO = getFloat(pos);
       if(dat->objects[getString(pos)] != "") jv.OBJ = getObject(pos);
       if(dat->arrays[getString(pos)] != "") jv.ARR = getArray(pos);
       return jv;
@@ -111,6 +127,16 @@ using namespace std;
 
     int JSONArray::getInt(int pos){
       return toInt(getString(pos));
+    }
+
+    float JSONArray::getFloat(int pos){
+      float res;
+      try {
+        res = std::stof(getString(pos));
+      } catch (const std::invalid_argument& e) {
+        return 0.0;
+      }
+      return res;
     }
 
     bool JSONArray::getBool(int pos){
@@ -139,7 +165,7 @@ using namespace std;
       return arr;
     }
 
-    bool JSONArray::setString(int pos, string val){
+    bool JSONArray::set(int pos, string val){
       string elt = getString(pos);
       if(dat->objects[elt] != "") {
         cout << "Error " << pos << " es un object!" << endl;
@@ -152,12 +178,16 @@ using namespace std;
       return true;
     }
 
-    bool JSONArray::setInt(int pos, int val){
-      return setString(pos, toStr(val));
+    bool JSONArray::set(int pos, int val){
+      return set(pos, toStr(val));
     }
 
-    bool JSONArray::setBool(int pos, bool val){
-      return setString(pos, val ? "true" : "false");
+    bool JSONArray::set(int pos, float val){
+      return set(pos, to_string(val));
+    }
+
+    bool JSONArray::set(int pos, bool val){
+      return set(pos, val ? "true" : "false");
     }
 
     JSONArray::JSONArray(JsonData *data){

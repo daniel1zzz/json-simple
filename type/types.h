@@ -18,14 +18,16 @@ class JSONObject{
     JSONValues operator[](string key);
     string getString(string key);
     int getInt(string key);
+    float getFloat(string key);
     bool getBool(string key);
     JSONObject getObject(string key);
     JSONArray getArray(string key);
 
     //Edit values, todo bien true
-    bool setString(string key, string val);
-    bool setInt(string key, int val);
-    bool setBool(string key, bool val);
+    bool set(string key, string val);
+    bool set(string key, int val);
+    bool set(string key, float val);
+    bool set(string key, bool val);
 
     JSONObject(JsonData *data);
     JSONObject();
@@ -41,14 +43,16 @@ class JSONArray{
     JSONValues operator[](int pos);
     string getString(int pos);
     int getInt(int pos);
+    float getFloat(int pos);
     bool getBool(int pos);
     JSONObject getObject(int pos);
     JSONArray getArray(int pos);
 
     //Edit values, todo bien true
-    bool setString(int pos, string val);
-    bool setInt(int pos, int val);
-    bool setBool(int pos, bool val);
+    bool set(int pos, string val);
+    bool set(int pos, int val);
+    bool set(int pos, float val);
+    bool set(int pos, bool val);
   
     JSONArray(JsonData *data);
     JSONArray();
@@ -59,7 +63,7 @@ class JSONValues{
   public:
     string STR;
     int INT;
-    //float FLO;
+    float FLO;
     bool BOO;
     JSONObject OBJ;
     JSONArray ARR;

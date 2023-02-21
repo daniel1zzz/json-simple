@@ -1,13 +1,14 @@
 {
   "name": "Daniel",
   "age": 18,
+  "num": 13.4,
   "voc": {
     "saludo": "Hi!",
     "despedida": "Good Bye!"
   },
   "array": [
     1,
-    2,
+    2.5,
     ["Hola Daniel"],
     {"eye": "Negros"}
   ]
