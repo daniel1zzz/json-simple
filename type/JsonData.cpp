@@ -10,7 +10,7 @@ class JsonData{
     long int position;
     string tokenID(string type){
       string result = "0x";
-      result += toStringHex(++position);
+      result += toStr(++position);
       result += "x";
       result += type;
       return result;

@@ -62,31 +62,6 @@ using namespace std;
       return arr;
     }
 
-    bool JSONObject::set(string key, string val){
-      string elt = getString(key);
-      if(dat->objects[elt] != "") {
-        cout << "Error " << key << " es un object!" << endl;
-        return false; //exit(0);
-      } else if(dat->arrays[elt] != "") {
-        cout << "Error " << key << " es un array!" << endl;
-        return false; //exit(0);
-      }
-      dat->values[dat->objects[id] + " " + key] = val;
-      return true;
-    }
-
-    bool JSONObject::set(string key, int val){
-      return set(key, toStr(val));
-    }
-
-    bool JSONObject::set(string key, float val){
-      return set(key, to_string(val));
-    }
-
-    bool JSONObject::set(string key, bool val){
-      return set(key, val ? "true" : "false");
-    }
-
     JSONObject::JSONObject(JsonData *data){
       this->dat = data;
       string identifier = dat->objects[
@@ -163,31 +138,6 @@ using namespace std;
         exit(0);
       } else arr.id = val;
       return arr;
-    }
-
-    bool JSONArray::set(int pos, string val){
-      string elt = getString(pos);
-      if(dat->objects[elt] != "") {
-        cout << "Error " << pos << " es un object!" << endl;
-        return false; //exit(0);
-      } else if(dat->arrays[elt] != "") {
-        cout << "Error " << pos << " es un array!" << endl;
-        return false; //exit(0);
-      }
-      dat->values[dat->arrays[id] + " " + toStr(pos)] = val;
-      return true;
-    }
-
-    bool JSONArray::set(int pos, int val){
-      return set(pos, toStr(val));
-    }
-
-    bool JSONArray::set(int pos, float val){
-      return set(pos, to_string(val));
-    }
-
-    bool JSONArray::set(int pos, bool val){
-      return set(pos, val ? "true" : "false");
     }
 
     JSONArray::JSONArray(JsonData *data){

@@ -135,6 +135,7 @@ class JsonObject{
             if(isWhiteSpace(jsonString[i])) JsonWhiteSpace(jsonString, &i, len, ln);
             //cout << "CS: " << jsonString[i-1] << endl;
             if (jsonString[i] == ',' || jsonString[i] == '}') {
+              //objToken = dat->setObject();
               dat->setValue(dat->objects[objToken] + " " + key, val);
               //cout << "R: " << key << " " << val << endl;
               if(jsonString[i] == '}') i--;

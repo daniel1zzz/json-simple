@@ -23,12 +23,6 @@ class JSONObject{
     JSONObject getObject(string key);
     JSONArray getArray(string key);
 
-    //Edit values, todo bien true
-    bool set(string key, string val);
-    bool set(string key, int val);
-    bool set(string key, float val);
-    bool set(string key, bool val);
-
     JSONObject(JsonData *data);
     JSONObject();
 
@@ -48,12 +42,6 @@ class JSONArray{
     JSONObject getObject(int pos);
     JSONArray getArray(int pos);
 
-    //Edit values, todo bien true
-    bool set(int pos, string val);
-    bool set(int pos, int val);
-    bool set(int pos, float val);
-    bool set(int pos, bool val);
-  
     JSONArray(JsonData *data);
     JSONArray();
 
