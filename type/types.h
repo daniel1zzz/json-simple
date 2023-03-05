@@ -42,6 +42,9 @@ class JSONArray{
     JSONObject getObject(int pos);
     JSONArray getArray(int pos);
 
+    //Length del array
+    int length();
+
     JSONArray(JsonData *data);
     JSONArray();
 

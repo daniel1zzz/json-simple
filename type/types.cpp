@@ -140,6 +140,10 @@ using namespace std;
       return arr;
     }
 
+    int JSONArray::length(){
+      return toInt(dat->values[dat->arrays[id] + " " + "len"]);
+    }
+
     JSONArray::JSONArray(JsonData *data){
       this->dat = data;
       string identifier = dat->objects[

@@ -195,14 +195,5 @@ class JsonWrite{
     void write(JSArray ar, string nameFile){
       writeFile(ar.toString(), nameFile);
     }
-    JsonWrite(){
-      
-    }
-    JsonWrite(JSObject ob, string nameFile){
-      write(ob, nameFile);
-    }
-    JsonWrite(JSArray ar, string nameFile){
-      write(ar, nameFile);
-    }
 };
 
