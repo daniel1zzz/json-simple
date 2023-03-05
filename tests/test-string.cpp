@@ -17,11 +17,13 @@ int main(){
   
   JsonData dat = jread.load("{\n"
   "  \"name\": \"Daniel\", \n"
-  "  \"age\": 18 \n"
+  "  \"age\": 18, \n"
+  "  \"arr\": [1, 2]"
   "}");
 
   JSONObject objMain(&dat);
   cout << objMain["name"].STR << endl;
-  
+  cout << objMain["arr"].ARR.length() << endl;
+
   return 0;
 }
